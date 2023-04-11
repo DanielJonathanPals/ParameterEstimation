@@ -1,0 +1,13 @@
+name = "ParameterEstimation"
+uuid = "b1f4003b-c5dc-4cb0-bb47-845963ca9684"
+authors = ["Daniel Pals <Daniel.Pals@tum.de>"]
+version = "1.0.0-DEV"
+
+[compat]
+julia = "1.8.5"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
