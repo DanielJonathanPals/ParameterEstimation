@@ -78,3 +78,25 @@ function σ(traj; exp_λ_p::Union{Array,Nothing}=nothing, μ_p::Union{Array,Noth
     b = (Matrix{Float64}(I,d^2,d^2) - exp(-A  .* traj.Δt)) \ A * x
     return vec_to_matrix(b)
 end
+
+
+"""
+    linear_parameter_estimates(traj::Trajectory)
+
+This function returns the most likely values for the matracies λ and σσᵀ as well as for the vector μ 
+    assuming that the measured trajectory follows an SODE of the form dx = -λx⋅dt-σdW
+
+# Arguments
+- 'traj::Trajectory': Trajectory to be analysed
+
+# Returns
+- 'λ': Estimate for λ
+- 'μ': Estimate for μ
+-  'σσᵀ': Estimate for σσᵀ
+"""
+function linear_parameter_estimates(traj::Trajectory)
+    exp_λ_p = exp_λ(traj)
+    μ_p = μ(traj; exp_λ_p = exp_λ_p)
+    σ_p = σ(traj; exp_λ_p = exp_λ_p, μ_p = μ_p)
+    λ_p = λ(traj)
+    return λ_p, μ_p, σ_p

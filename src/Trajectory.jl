@@ -38,7 +38,17 @@ function Trajectory(data::Array{Float64},Δt::Number,capacity::Int)
 end
 
 
-function push!(traj::Trajectory,data)
+"""
+    push!(traj::Trajectory,data)
+
+Pushes the given data into the field traj.data of the trajectory object
+
+# Arguments
+
+- 'traj::Trajectory'
+- 'data::Array'
+"""
+function push!(traj::Trajectory,data::Array)
     if size(data)[1] != space_dim(traj)
         error("The dimension of the data that is attemted to be pushed into the Trajectory does not have the correct dimension")
     end
