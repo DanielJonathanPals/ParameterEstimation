@@ -100,3 +100,4 @@ function linear_parameter_estimates(traj::Trajectory)
     σ_p = σ(traj; exp_λ_p = exp_λ_p, μ_p = μ_p)
     λ_p = λ(traj)
     return λ_p, μ_p, σ_p
+end
